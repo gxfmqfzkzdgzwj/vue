@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>动态props属性</title>
+	<script  src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js" type="text/javascript"></script>
+</head>	
+<body>
+	<div id="app">
+		<ol>
+			<to-do-items  v-for ="item in todos" v-bind:todo = "item" ></to-do-items>
+		</ol>
+	</div>
+
+	<script>
+		Vue.component('to-do-items',{
+			props:['todo'],
+			template:'<li>{{todo.text}}</li>'
+		})
+
+		var app = new Vue(
+		{
+			el:"#app",
+			data:{
+				todos:[{text:'学习javaScript'},{text:"学习Vue"},{text:"创造代码"}]
+			}
+		})
+
+		//实例中将 v-bind 指令将 todo 传到每一个重复的组件中：
+		//注意: prop 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是不会反过来。
+	</script>
+</body>
+</html>

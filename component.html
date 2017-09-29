@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>组件实例</title>
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="app">
+		<runoob></runoob>
+	</div>
+
+	<div id="app1">
+		<runoo></runoo>
+	</div>
+
+	<script>
+
+		//全局组件
+		//第一步：注册组件
+		Vue.component('runoob',{
+			template:'<h1>自定义组件</h1>'
+		})
+        //第二步 创建根实例
+        var app = new Vue({
+        	el:'#app'
+        })
+
+/*        var Child = {
+        	template:'<h2>局部自定义组件</h2>'
+        }
+
+        var app1 = new Vue({
+        	el:'#app1',
+        	component:{
+        		'compon':Child
+        	}
+        })*/
+
+ var Child = {
+  template: '<h2>Just Try</h2>'
+}
+
+// 创建根实例
+new Vue({
+  el: '#app1',
+  components: {
+    // <runoob> 将只在父模板可用
+    'runoo': Child
+  }
+})
+
+	</script>
+</body>
+</html>

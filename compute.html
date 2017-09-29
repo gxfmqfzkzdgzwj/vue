@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>原始字符串: 是不是我</p>
+  <p>计算后反转字符串: {{ site }}</p> 
+</div>
+
+<script>
+var vm = new Vue({
+  el: '#app',
+  data: {
+    message: 'Runoob!'
+  },
+  computed: {
+    // 计算属性的 getter
+    site:{
+		get:function(){
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    },
+	set:function(newValue){
+		this.message = newValue
+	}
+  }
+  }
+})
+
+vm.site = '菜鸟教程 http://www.runoob.com';
+
+//通过这个可以设置message内容 {{site}}中显示的值是根据get方法来进行显示。get和set两个名字不允许更改 过程中拉掉逗号，都显示不出来   computed 属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：
+</script>
+</body>
+</html>
